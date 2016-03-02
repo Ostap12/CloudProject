@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\TestEE\000_Hello_Endpoints"/>
 			<item value="D:\TestEE\00_Conference_Central"/>
 		</list>
 		<list key="projectNameTemplate">
