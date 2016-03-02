@@ -49,11 +49,7 @@ public class ConferenceApi {
     // TODO 1 Pass the ProfileForm parameter
     // TODO 2 Pass the User parameter
     public Profile saveProfile(final User user, ProfileForm profileForm) throws UnauthorizedException {
-
-        String userId = null;
-        String mainEmail = null;
-        String displayName = "Your name will go here";
-        TeeShirtSize teeShirtSize = TeeShirtSize.NOT_SPECIFIED;
+    	
 
         // TODO 2
         // If the user is not logged in, throw an UnauthorizedException
@@ -64,23 +60,26 @@ public class ConferenceApi {
      // TODO 1
         // Set the displayName to the value sent by the ProfileForm, if sent
         // otherwise set it to null
-        displayName = profileForm.getDisplayName();
+        String displayName = profileForm.getDisplayName();
+        TeeShirtSize teeShirtSize = profileForm.getTeeShirtSize();
         // TODO 1
         // Set the teeShirtSize to the value sent by the ProfileForm, if sent
         // otherwise leave it as the default value
         if (profileForm.getTeeShirtSize() != null) {
-			 teeShirtSize = profileForm.getTeeShirtSize();
+        	 teeShirtSize = profileForm.getTeeShirtSize();
 		 }
         
         
-        Profile profile = ofy().load().key(Key.create(Profile.class, userId))
-                .now();
         
         // TODO 2
         // Get the userId and mainEmail
-        mainEmail = user.getEmail();
-		userId = user.getUserId();
+        String mainEmail = user.getEmail();
+		 String userId = user.getUserId();
 
+		 
+		 Profile profile = ofy().load().key(Key.create(Profile.class, userId))
+	                .now();
+	        
         // TODO 2
         // If the displayName is null, set it to default value based on the user's email
         // by calling extractDefaultDisplayNameFromEmail(...)
